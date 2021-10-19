@@ -206,6 +206,7 @@ public class DoublyLinked {
 
     public void setHead(Node head) {
         this.head = head;
+        this.current = this.head;
     }
 
     public Node getTail() {

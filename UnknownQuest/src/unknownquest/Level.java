@@ -74,4 +74,11 @@ public class Level {
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
+    
+    public void getRoomsDescriptions() {
+    	System.out.println(roomOne.getName() + " " + roomOne.getDescription());
+    	System.out.println(roomTwo.getName() + " " + roomTwo.getDescription());
+    	System.out.println(roomThree.getName() + " " + roomThree.getDescription());
+    	System.out.println(roomFour.getName() + " " + roomFour.getDescription());
+    }
 }

@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 public class UnknownQuest {
 	
-	static boolean startGame = false; 
-   
+	static boolean startGame = true; 
+	static Scanner in;
+	
     public static void main(String[] args) {
 
     	//reading the introduction file
@@ -20,12 +21,15 @@ public class UnknownQuest {
 		} catch(Exception e) {
 			System.out.println("wrong file path!!");
 		}	    	
-    	playerInfo();
-    	Game game = new Game(startGame);
-        
+    	
+    	//playerInfo();
+    	Game game = new Game();
+        game.playing(startGame, in);
     }
     
+    //Player input name 
     public static void playerInfo() {
+    	
     	//player input name
     	Scanner in = new Scanner(System.in);
     	System.out.println("what is your name hero: ");
@@ -36,8 +40,7 @@ public class UnknownQuest {
     	
     	if(start.equals("yes")) {
     		startGame = true;
-    		PlayerNpc gameHero = new PlayerNpc(heroName, 60, 0);
-    		in.close();
+    		PlayerNpc gameHero = new PlayerNpc(heroName, 60, 0);    		
     	}
     	else {    		
     		System.out.println("Good choice you would have fail anyways, good luck");    		

@@ -3,20 +3,24 @@ package unknownquest;
 import java.util.Scanner;
 
 public class Decisions {
-	private String[] moves = {"walk", "where I am", "examine", "fight", "run"};
+	private String[] moves = {"walk", "where I am", "examine", "fight", "run", "next stage"};
 	
 	public Decisions(String choice, DoublyLinked stage) {
 		//checks if choice is a valid move
 		boolean isInvalid = true;
 		for(int i = 0; i < moves.length; i++) {
+			
 			if(choice.equals(moves[i])) {
+				
 				switch (choice) {		
 				case "walk":
 					walk(stage);
 					break;
 				case "where I am":
 					whereIam(stage);
-					break;				
+					break;	
+				case "next stage":
+					nextStage(stage);
 				}
 				isInvalid = false;
 			}
@@ -74,5 +78,9 @@ public class Decisions {
 	//prints the different rooms descriptions
 	public void doorsDescription(DoublyLinked stage) {
 		stage.getCurrent().getLevel().getRoomsDescriptions();
+	}
+	
+	public void nextStage(DoublyLinked stage) {
+		stage.setCurrent(stage.getCurrent().getNextLevel());
 	}
 }

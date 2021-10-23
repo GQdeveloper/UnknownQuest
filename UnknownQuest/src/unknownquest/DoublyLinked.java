@@ -54,6 +54,7 @@ public class DoublyLinked {
         getCurrent().setNextLevel(stage);
         stage.setPrevLevel(getCurrent());
         setTail(stage);
+        setCurrent(getHead());
 
     }
 

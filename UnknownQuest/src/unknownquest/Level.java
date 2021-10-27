@@ -76,9 +76,9 @@ public class Level {
     }
     
     public void getRoomsDescriptions() {
-    	System.out.println(roomOne.getName() + " " + roomOne.getDescription());
-    	System.out.println(roomTwo.getName() + " " + roomTwo.getDescription());
-    	System.out.println(roomThree.getName() + " " + roomThree.getDescription());
-    	System.out.println(roomFour.getName() + " " + roomFour.getDescription());
+    	System.out.println("1. " + roomOne.getName() + ": " + roomOne.getDescription());
+    	System.out.println("2. " + roomTwo.getName() + ": " + roomTwo.getDescription());
+    	System.out.println("3. " + roomThree.getName() + ": " + roomThree.getDescription());
+    	System.out.println("4. " +roomFour.getName() + ": " + roomFour.getDescription());
     }
 }

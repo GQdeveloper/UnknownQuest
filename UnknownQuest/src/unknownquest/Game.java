@@ -12,7 +12,7 @@ public  class Game {
 	}	
 	
 	
-	public void playing(boolean runGame, Scanner input)  {
+	public void playing(boolean runGame, Scanner input, PlayerNpc hero)  {
 		if(runGame) {
 			//read file to populate the level information and added to doublylinked list
 			try {
@@ -22,16 +22,13 @@ public  class Game {
 				input.useDelimiter(",");	
 				
 				//LOOP TO ARRAY TO HOLD LEVELS INFORMATION WHEN READING FILE
-				while(input.hasNext()) {
-					System.out.println("inside populating while loop");
+				while(input.hasNext()) {					
 					
 					for(int i = 0; i < lvlsInfo.length; i ++) {
-						String lvlArgs = input.next();							
-						//System.out.println(lvlArgs);
+						String lvlArgs = input.next();						
 						lvlsInfo[i] = lvlArgs;
 						
-					}				
-					//System.out.println("out of for loop");
+					}					
 					
 					//USE ARRAY INFO TO POPULATE LEVELS INFORMATION
 					Level firstStage = new Level(lvlsInfo[0], lvlsInfo[1],lvlsInfo[2], lvlsInfo[3], lvlsInfo[4], lvlsInfo[5], 
@@ -58,16 +55,13 @@ public  class Game {
 			
 		while(true) {
 			input = new Scanner(System.in);
-			System.out.println("MOVES: [walk] - [where I am] - [examine] - [fight] - [run] - [next stage]");
+			System.out.println("MOVES: [walk] - [where I am] - [examine] - [fight] - [run] - [inventory]");
 			System.out.println("please make a move: ");
 			String answer = input.nextLine();
 			
 			//checking if the current room is being update it
 			//System.out.println(stages.getCurrent().getLevel().getCurrentRoom().getName() + "TEST: PREVIOUS ROOM GAME FILE");
-			Decisions choice = new Decisions(answer, stages);
-			
-			
-			System.out.println("we are back to the game class");
+			Decisions choice = new Decisions(answer, stages, hero);			
 			//System.out.println(stages.getCurrent().getLevel().getCurrentRoom().getName() + "TEST: CURRENT NEW ROOM GAME FILE");
 		}
 	}

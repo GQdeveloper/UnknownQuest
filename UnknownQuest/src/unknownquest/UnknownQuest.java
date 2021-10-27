@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Scanner;
 
 public class UnknownQuest {
-	
+	static PlayerNpc gameHero;
 	static boolean startGame = true; 
 	static Scanner in;
 	
@@ -22,9 +22,9 @@ public class UnknownQuest {
 			System.out.println("wrong file path!!");
 		}	    	
     	
-    	//playerInfo();
+    	playerInfo();
     	Game game = new Game();
-        game.playing(startGame, in);
+        game.playing(startGame, in, gameHero);
     }
     
     //Player input name 
@@ -40,10 +40,11 @@ public class UnknownQuest {
     	
     	if(start.equals("yes")) {
     		startGame = true;
-    		PlayerNpc gameHero = new PlayerNpc(heroName, 60, 0);    		
+    		gameHero = new PlayerNpc(heroName, 100, 0);    		
     	}
     	else {    		
-    		System.out.println("Good choice you would have fail anyways, good luck");    		
+    		System.out.println("Good choice you would have fail anyways, good luck"); 
+    		System.exit(0);
     	}	
     }
     

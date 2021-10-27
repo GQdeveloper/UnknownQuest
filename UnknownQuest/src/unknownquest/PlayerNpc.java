@@ -6,7 +6,8 @@ public class PlayerNpc {
     private String name;
     private  int health;
     private int damage;
-    private Item[] content;
+    private Item[] inventory = new Item[6];
+    private int currentInventoryIndex = 0;
     
     
     public PlayerNpc(String name, int health, int damage ){
@@ -40,11 +41,28 @@ public class PlayerNpc {
     }
 
     public Item[] getContent() {
-        return content;
+        return inventory;
+    }
+    
+    public void showInventory() {
+    	String inventoryItems = "";
+    	for(int i = 0; i < inventory.length; i++) {
+    		if(inventory[i] != null) {
+    			inventoryItems += inventory[i].getName() + ",";
+    		}    		
+    	}
+    	System.out.println(inventoryItems);
     }
 
-    public void setContent(Item[] content) {
-        this.content = content;
+    public void setContent(Item newItem) {
+    	if (currentInventoryIndex == this.inventory.length) {
+    		System.out.println("your inventory is full");
+    	}
+    	else {
+    		  this.inventory[currentInventoryIndex] = newItem;
+    	      currentInventoryIndex++;
+    	}
+      
     }
 
    

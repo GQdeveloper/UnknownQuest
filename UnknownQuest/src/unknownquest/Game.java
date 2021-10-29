@@ -15,19 +15,21 @@ public  class Game {
 	public void playing(boolean runGame, Scanner input, PlayerNpc hero)  {
 		if(runGame) {
 			//read file to populate the level information and added to doublylinked list
-			try {
+			try
+			{
 				String lvlsInfo [] = new String [9]; 
 				File levelsFile = new File("src/infoLevels.txt");				
 				input = new Scanner(levelsFile);
 				input.useDelimiter(",");	
 				
 				//LOOP TO ARRAY TO HOLD LEVELS INFORMATION WHEN READING FILE
-				while(input.hasNext()) {					
+				while(input.hasNext())
+				{					
 					
-					for(int i = 0; i < lvlsInfo.length; i ++) {
+					for(int i = 0; i < lvlsInfo.length; i ++)
+					{
 						String lvlArgs = input.next();						
-						lvlsInfo[i] = lvlArgs;
-						
+						lvlsInfo[i] = lvlArgs;						
 					}					
 					
 					//USE ARRAY INFO TO POPULATE LEVELS INFORMATION
@@ -40,10 +42,12 @@ public  class Game {
 				System.out.println("You are in the game \n");
 				System.out.println("list lenght " + stages.listLenght());
 				
-			} catch(java.io.FileNotFoundException e) {
+			} catch(java.io.FileNotFoundException e)
+			{
 				System.out.println("wrong file path in game!! \n");
 				System.exit(0);
-			} catch(java.util.NoSuchElementException e) {
+			} catch(java.util.NoSuchElementException e)
+			{
 				System.out.println("populating levels the scanner not found a word to read, probably wrong formating in file\n");
 				System.exit(0);
 			}
@@ -55,9 +59,9 @@ public  class Game {
 			
 		while(true) {
 			input = new Scanner(System.in);
-			System.out.println("MOVES: [walk] - [where I am] - [examine] - [fight] - [run] - [inventory]");
+			System.out.println("MOVES: [walk] - [where I am] - [inventory] - [status]");
 			System.out.println("please make a move: ");
-			String answer = input.nextLine();
+			String answer = input.nextLine().toLowerCase();
 			
 			//checking if the current room is being update it
 			//System.out.println(stages.getCurrent().getLevel().getCurrentRoom().getName() + "TEST: PREVIOUS ROOM GAME FILE");

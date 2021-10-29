@@ -11,14 +11,17 @@ public class UnknownQuest {
     public static void main(String[] args) {
 
     	//reading the introduction file
-    	try {
+    	try
+    	{
     		File introFile = new File("src/intro.txt");
     		Scanner intro = new Scanner(introFile);
-    		while(intro.hasNextLine()) {
+    		while(intro.hasNextLine())
+    		{
     			System.out.println(intro.nextLine());
     		}
     		intro.close();    		
-		} catch(Exception e) {
+		} catch(Exception e)
+    	{
 			System.out.println("wrong file path!!");
 		}	    	
     	
@@ -36,13 +39,15 @@ public class UnknownQuest {
     	String heroName = in.nextLine();   	    	
     	
     	System.out.println("Hello " + heroName + " Would you like to start the journey.");    	
-    	String start = in.nextLine();
+    	String start = in.nextLine().toLowerCase();
     	
-    	if(start.equals("yes")) {
+    	if(start.equals("yes"))
+    	{
     		startGame = true;
-    		gameHero = new PlayerNpc(heroName, 100, 0);    		
+    		gameHero = new PlayerNpc(heroName, 100, 10);    		
     	}
-    	else {    		
+    	else
+    	{    		
     		System.out.println("Good choice you would have fail anyways, good luck"); 
     		System.exit(0);
     	}	

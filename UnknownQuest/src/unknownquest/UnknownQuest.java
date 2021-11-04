@@ -35,10 +35,10 @@ public class UnknownQuest {
     	
     	//player input name
     	Scanner in = new Scanner(System.in);
-    	System.out.println("what is your name hero: ");
+    	System.out.println("what is your name hero: \n");
     	String heroName = in.nextLine();   	    	
     	
-    	System.out.println("Hello " + heroName + " Would you like to start the journey.");    	
+    	System.out.println("Hello " + heroName + " Would you like to start the journey Y/N. \n");    	
     	String start = in.nextLine().toLowerCase();
     	
     	if(start.equals("yes"))

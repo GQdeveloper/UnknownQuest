@@ -1,18 +1,26 @@
 package unknownquest;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
-import unknownquest.HelperMethods;
 
 
 
-public class PlayerNpc {
+public class PlayerNpc  {
+	private boolean alive = true;
+	private final int inventorySize = 6;
+	 private ArrayList<Item> inventory = new ArrayList<Item>();
     private String name;
     private  int health;
-    private int damage;
-    private Item[] inventory = new Item[6];
-    private int inventoryElements = 0;
+    private int damage;  
+    private int heroLvl = 1;
+    private int heroExperience = 0;
+	private int enemyExperience = 20;
+   
     
-    public PlayerNpc() {
+   
+	public PlayerNpc() {
     	
     } 
     
@@ -22,13 +30,23 @@ public class PlayerNpc {
         this.damage = damage;        
     }
     
-    public void makeEnemy(int health, int damage) {
+    public void makeEnemy(int lvlId) {
     	String enemyNames[] = {"Goblin", "demon", "rat", "evil bat","demon dog", "vampire", "dark spirit"};
     	Random rand = new Random();
     	int randIndex = rand.nextInt(enemyNames.length);    	
     	this.name = enemyNames[randIndex];
-        this.health = health;
-        this.damage = damage;    
+        this.health = 60;       
+        this.damage = 6;
+        
+        if(lvlId > 0) {
+        	 int lvlUpgrades =  lvlId * (this.enemyExperience/3);
+        	 this.enemyExperience += lvlUpgrades;
+        	 lvlUpgrades =  lvlId * (this.damage/3);
+        	 this.damage += lvlUpgrades;
+        	 lvlUpgrades = lvlId * (this.health/4);
+        	 this.health += lvlUpgrades;
+        }       
+        
     }
 
     public String getName() {
@@ -55,23 +73,21 @@ public class PlayerNpc {
         this.damage = damage;
     }
 
-    public Item[] getContent() {
+    public  ArrayList<Item> getContent() {
         return inventory;
     }
     
-    public int getInventoryElements() {
-    	return inventoryElements;
-    }
+   
     
     public void inventoryManage() {
     	
-    	String moves[] = {"use item", "drop item", "close"};
+    	String moves[] = {"use item", "close"};
     	String choice = null;
     	boolean inValid = true;
     	
     	while(inValid)
     	{
-	    	System.out.println("[use item] + [drop item] + [close]");
+	    	System.out.println("[use item] + [close]");
 	    	Scanner in = new Scanner(System.in);
 	    	choice = in.nextLine().toLowerCase();
 	    	
@@ -92,8 +108,7 @@ public class PlayerNpc {
     		case "use item":
     			useItem();    			
     			break;
-    		case "drop item":
-    			break;
+    			
     		case "close":
     			break;
     	}
@@ -104,76 +119,132 @@ public class PlayerNpc {
     	boolean open = true;
     	while(open)
     	{
-	    	System.out.println("what item would you like to use? ");
+	    	System.out.println("what item would you like to use? \n");
 	    	Scanner in = new Scanner(System.in);
 	    	String choice = in.nextLine().toLowerCase();
 	    	
-		    	switch (choice) {    	
-					case "magic water":
-						if(HelperMethods.getItem(inventory,inventoryElements, choice) != null)
-						{
-							setDamage(getDamage() + HelperMethods.getItem(inventory,inventoryElements, choice).getDamage());
-							open = false;
-						}
-						break;
-					case "heal potion":
-						if(HelperMethods.getItem(inventory,inventoryElements, choice) != null)
-						{
-							setHealth(getHealth() + HelperMethods.getItem(inventory,inventoryElements, choice).getHealing());
-							open = false;
-						}
-						break;
-					case "fire rock":
-						if(HelperMethods.getItem(inventory,inventoryElements, choice) != null)
-						{
-							setDamage(getDamage() + HelperMethods.getItem(inventory,inventoryElements, choice).getDamage());
-							open = false;
-						}
-						break;
-					case "ice rock":
-						if(HelperMethods.getItem(inventory,inventoryElements, choice) != null)
-						{
-							setDamage(getDamage() + HelperMethods.getItem(inventory,inventoryElements, choice).getDamage());
-							open = false;
-						}
-						break;
-			}
+	    	boolean itemFound = false;
+	    	for(int i = 0; i < inventory.size(); i++) {
+	    		if(itemFound) {
+	    			break;
+	    		}
+	    		
+	    		if(choice.equals(inventory.get(i).getName()))
+	    		{
+	    			switch(choice)
+	    			{
+	    				
+		    			case "heal potion":
+		    				setHealth(getHealth() + inventory.get(i).getHealing());
+		    				inventory.remove(i);
+		    				itemFound = true;
+		    				open = false;
+		    				break;
+		    				
+		    			case "magic water":
+		    				setDamage(getDamage() + inventory.get(i).getDamage());
+		    				inventory.remove(i);
+		    				itemFound = true;
+		    				open = false;
+		    				break;
+		    				
+		    			case "fire rock":
+		    				setHealth(getHealth() + inventory.get(i).getHealing());
+		    				inventory.remove(i);
+		    				itemFound = true;
+		    				open = false;
+		    				break;
+		    				
+		    			case "ice rock":
+		    				setHealth(getHealth() + inventory.get(i).getHealing());
+		    				inventory.remove(i);
+		    				itemFound = true;
+		    				open = false;
+		    				break;
+	    			} 			
+	    		}
+	    	}
+	    	if(itemFound == false) {
+	    		System.out.println("You don't have that item\n");
+	    	}
+	    	
+	    	
     	}
 		
 	}
+     
+    
 
 	public void showInventory() {
     	
-    	String inventoryItems = "";
-    	if(this.inventory[0] != null)
-		{    		
-	    	for(int i = 0; i < inventoryElements; i++) 
-	    	{	    		 
-	    		inventoryItems += "[" + inventory[i].getName() + "]";    		 		
-	    	}
-	    	System.out.println(inventoryItems);
-	    	inventoryManage();
-    	}
-    	else
-    	{
-    		System.out.println("Inventory is empty");
-    	}
+		if(inventory.isEmpty()) {
+			System.out.println("Inventory is empty");
+		}
+		else
+		{
+			String content = "";
+			for(int i = 0; i < inventory.size(); i++)
+			{
+				content += "[" + inventory.get(i).getName() + "]";
+			}
+			System.out.println(content);	
+			inventoryManage();
+		}	
+		
     }
 
     
     public void setContent(Item newItem)
     {
-    	if (inventoryElements != inventory.length)
-    	{
-    		 inventory[inventoryElements] = newItem;
-   	      	 inventoryElements++;   	      	 
+    	if(inventory.size() < inventorySize) {
+    		inventory.add(newItem);
     	}
     	else
     	{
-    		 System.out.println("Your inventory is full");
+    		System.out.println("Your inventory is full\n");
     	}
-    	
+   	
     }
+
+	public boolean isAlive() {
+		return alive;
+	}
+
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
+
+	public int getHeroLvl() {
+		return heroLvl;
+	}
+
+	public void setHeroLvl(int heroLvl) {
+		if (this.getHeroExperience() >= 100) {
+			this.heroLvl = heroLvl;
+			this.heroExperience = 0;
+		}		
+	}
+
+	public int getHeroExperience() {
+		return heroExperience;
+	}
+
+	public void setHeroExperience(int heroExperience) {			
+		this.heroExperience += heroExperience;		
+		if (this.getHeroExperience() >= 100) {
+			this.heroLvl += 1;
+			this.heroExperience = 0;
+			this.setDamage(this.damage + 6); ;
+			this.setHealth(120);}
+	}
+	
+	 public int getEnemyExperience() {
+			return enemyExperience;
+		}
+
+	public void setEnemyExperience(int enemyExperience) {
+		this.enemyExperience = enemyExperience;
+	}
 
    
     

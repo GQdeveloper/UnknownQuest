@@ -17,7 +17,7 @@ public  class Game {
 			//read file to populate the level information and added to doublylinked list
 			try
 			{
-				String lvlsInfo [] = new String [9]; 
+				String lvlsInfo [] = new String [10]; 
 				File levelsFile = new File("src/infoLevels.txt");				
 				input = new Scanner(levelsFile);
 				input.useDelimiter(",");	
@@ -28,19 +28,25 @@ public  class Game {
 					
 					for(int i = 0; i < lvlsInfo.length; i ++)
 					{
-						String lvlArgs = input.next();						
+						String lvlArgs = input.next().trim();						
 						lvlsInfo[i] = lvlArgs;						
 					}					
 					
 					//USE ARRAY INFO TO POPULATE LEVELS INFORMATION
+					
 					Level firstStage = new Level(lvlsInfo[0], lvlsInfo[1],lvlsInfo[2], lvlsInfo[3], lvlsInfo[4], lvlsInfo[5], 
-							lvlsInfo[6], lvlsInfo[7], lvlsInfo[8]);			
+							lvlsInfo[6], lvlsInfo[7], lvlsInfo[8], lvlsInfo[9]);			
 					stages.insertEnd(firstStage);
 				}
 				
-				
-				System.out.println("You are in the game \n");
-				System.out.println("list lenght " + stages.listLenght());
+				File origin = new File("src/origin.txt");				
+				Scanner rFile = new Scanner(origin);
+				while(rFile.hasNextLine())
+	    		{
+	    			System.out.println(rFile.nextLine());
+	    		}
+					
+				//System.out.println("list lenght " + stages.listLenght());
 				
 			} catch(java.io.FileNotFoundException e)
 			{
@@ -57,9 +63,11 @@ public  class Game {
 					
 			//GAME'S MAIN LOOP LOGIC: taking decisions 	
 			
-		while(true) {
-			input = new Scanner(System.in);
-			System.out.println("MOVES: [walk] - [where I am] - [inventory] - [status]");
+		while(hero.isAlive()) {
+			
+			input = new Scanner(System.in);		
+			
+			System.out.println("MOVES: [walk] - [where I am] - [inventory] - [status] - [R portal] - [B portal]");
 			System.out.println("please make a move: ");
 			String answer = input.nextLine().toLowerCase();
 			
@@ -68,6 +76,8 @@ public  class Game {
 			Decisions choice = new Decisions(answer, stages, hero);			
 			//System.out.println(stages.getCurrent().getLevel().getCurrentRoom().getName() + "TEST: CURRENT NEW ROOM GAME FILE");
 		}
+		
+		System.out.println("You have died. GAME OVER");
 	}
 	
 }

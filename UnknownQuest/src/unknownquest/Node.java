@@ -3,11 +3,13 @@ package unknownquest;
 public class Node {
 
     private Level level;
+    private int lvlId = 0;
     private Node next;
     private Node prev;
 
     public Node(Level level) {
         this.level = level;
+        
     }
 
     public Level getLevel() {
@@ -33,5 +35,13 @@ public class Node {
     public void setPrevLevel(Node prev) {
         this.prev = prev;
     }
+
+	public int getLvlId() {
+		return lvlId;
+	}
+
+	public void setLvlId(int lvlId) {
+		this.lvlId = lvlId;
+	}
 
 }

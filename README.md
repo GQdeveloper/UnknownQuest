@@ -14,5 +14,15 @@ rooms within the level. And since the leves are within a node this allows us to 
 
 ![doubly-linked](https://user-images.githubusercontent.com/22235903/140579896-9f778342-9805-40a8-b3bc-79a28cda649a.png)
 
+---
+## Use it
+ - download the source files and run it on you IDE's compiler.
+---
+
+## How to Play
+ 
+- Input your name and answer the questions and the game will begin. 
+- Once the intro ends, you will have a vailable moves printed to you such as: [walk] or [inventory]
+- Just experiment and check what can you do
  
 

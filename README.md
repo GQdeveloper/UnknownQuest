@@ -6,13 +6,16 @@ depending on your choices you can either move to the next or previous level, fin
 chess with items, or nothing at all; all these events are random.
 
 ---
+## How It Works
 
-I would like to mention that, I used a doubly-linked list data structure to populate the nodes with level objects,
+Thanks to OOP, I used a doubly-linked list data structure to populate the nodes with level objects,
 each level object contains four rooms all of these are interconnected. This is because  we want to be able to move between 
 rooms within the level. And since the leves are within a node this allows us to move between levels.
 
-
 ![doubly-linked](https://user-images.githubusercontent.com/22235903/140579896-9f778342-9805-40a8-b3bc-79a28cda649a.png)
+
+Created the necessary classes for the idea I had in mind. I used these classes accordingly, along with conditionals and loops, to
+obtain the desired control flow of the game. I just wanted to create a simple game by using a data structure.
 
 ---
 ## Use it
@@ -20,9 +23,9 @@ rooms within the level. And since the leves are within a node this allows us to 
 ---
 
 ## How to Play
- 
-- Input your name and answer the questions and the game will begin. 
-- Once the intro ends, you will have a vailable moves printed to you such as: [walk] or [inventory]
-- Just experiment and check what can you do
+
+- Input your name and answer the questions, then the game will begin. 
+ - Once the intro ends, you will be able to perform actions, these actions will be printed such as [walk] or [inventory]
+ - Experiment and check what you can do.
  
 

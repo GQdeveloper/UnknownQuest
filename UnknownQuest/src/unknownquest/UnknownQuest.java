@@ -38,7 +38,7 @@ public class UnknownQuest {
     	System.out.println("what is your name hero: \n");
     	String heroName = in.nextLine();   	    	
     	
-    	System.out.println("Hello " + heroName + " Would you like to start the journey Y/N. \n");    	
+    	System.out.println("Hello " + heroName + " Would you like to start the journey Yes/No. \n");    	
     	String start = in.nextLine().toLowerCase();
     	
     	if(start.equals("yes"))

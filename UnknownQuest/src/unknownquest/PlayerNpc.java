@@ -17,6 +17,7 @@ public class PlayerNpc  {
     private int heroLvl = 1;
     private int heroExperience = 0;
 	private int enemyExperience = 20;
+	private Item magicDamage;
    
     
    
@@ -35,7 +36,7 @@ public class PlayerNpc  {
     	Random rand = new Random();
     	int randIndex = rand.nextInt(enemyNames.length);    	
     	this.name = enemyNames[randIndex];
-        this.health = 60;       
+        this.health = randIndex * 10;       
         this.damage = 6;
         
         if(lvlId > 0) {
@@ -149,14 +150,14 @@ public class PlayerNpc  {
 		    				break;
 		    				
 		    			case "fire rock":
-		    				setHealth(getHealth() + inventory.get(i).getHealing());
+		    				this.setMagicDamage(inventory.get(i));
 		    				inventory.remove(i);
 		    				itemFound = true;
 		    				open = false;
 		    				break;
 		    				
 		    			case "ice rock":
-		    				setHealth(getHealth() + inventory.get(i).getHealing());
+		    				this.setMagicDamage(inventory.get(i));
 		    				inventory.remove(i);
 		    				itemFound = true;
 		    				open = false;
@@ -244,6 +245,14 @@ public class PlayerNpc  {
 
 	public void setEnemyExperience(int enemyExperience) {
 		this.enemyExperience = enemyExperience;
+	}
+
+	public Item getMagicDamage() {
+		return magicDamage;
+	}
+
+	public void setMagicDamage(Item magicDamage) {
+		this.magicDamage = magicDamage;
 	}
 
    

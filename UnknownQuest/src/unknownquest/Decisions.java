@@ -27,7 +27,10 @@ public class Decisions {
 						
 						break;
 					case "b portal":
-						nextStage(stage);
+						if(checkingLevel(hero, stage)) {
+							nextStage(stage);							
+						}
+						
 						break;
 						
 					case "inventory":
@@ -45,6 +48,17 @@ public class Decisions {
 		{
 		System.out.println("that is not a valid move, try again \n");
 		}
+	}
+
+
+	private boolean checkingLevel(PlayerNpc hero, DoublyLinked stage) {
+		if(hero.getHeroLvl() - 1 > stage.getCurrentValue().getLvlId()) {
+			return true;
+		}
+		
+		System.out.println("you are not strong enough");
+		return false;
+		
 	}
 
 
@@ -83,24 +97,29 @@ public class Decisions {
 		switch (doorNumber)
 		{		
 			case 1:
+			
 				stage.getCurrent().getLevel().setCurrentRoom(stage.getCurrent().getLevel().getRoomOne());
-				System.out.println("You head towards: " + stage.getCurrent().getLevel().getRoomOne().getName());			
+				System.out.println("You head towards: " + stage.getCurrent().getLevel().getRoomOne().getName() + "\n");	
+				System.out.println(stage.getCurrent().getLevel().getCurrentRoom().getDescription() + "\n");
 				event.events(hero, stage);
 				break;
 			case 2:
 				stage.getCurrent().getLevel().setCurrentRoom(stage.getCurrent().getLevel().getRoomTwo());
-				System.out.println("You head towards: " + stage.getCurrent().getLevel().getRoomTwo().getName());
+				System.out.println("You head towards: " + stage.getCurrent().getLevel().getRoomTwo().getName() + "\n");
+				System.out.println(stage.getCurrent().getLevel().getCurrentRoom().getDescription() + "\n");
 				event.events(hero, stage);
 				break;
 			case 3:
 				stage.getCurrent().getLevel().setCurrentRoom(stage.getCurrent().getLevel().getRoomThree());
-				System.out.println("You head towards: " + stage.getCurrent().getLevel().getRoomThree().getName());
+				System.out.println("You head towards: " + stage.getCurrent().getLevel().getRoomThree().getName()  + "\n");
+				System.out.println(stage.getCurrent().getLevel().getCurrentRoom().getDescription() + "\n");
 				event.events(hero, stage);
 				break;
 				
 			case 4:
 				stage.getCurrent().getLevel().setCurrentRoom(stage.getCurrent().getLevel().getRoomFour());
-				System.out.println("You head towards: " + stage.getCurrent().getLevel().getRoomFour().getName());
+				System.out.println("You head towards: " + stage.getCurrent().getLevel().getRoomFour().getName()  + "\n");
+				System.out.println(stage.getCurrent().getLevel().getCurrentRoom().getDescription() + "\n");
 				event.events(hero, stage);
 				break;			
 		}

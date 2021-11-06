@@ -16,7 +16,7 @@ public class GameEvents {
 		switch(event)
 		{
 			case 0:
-				System.out.println("the " + stage.getCurrent().getLevel().getCurrentRoom().getName() + "I can't see anything, eveything is dark and cold\n");
+				System.out.println(" I can't see anything, eveything is dark and cold\n");
 				break;
 				
 			case 1:	
@@ -35,15 +35,18 @@ public class GameEvents {
 				break;
 				
 			case 2:				
-				System.out.println("you have encounter an enemy\n");
+				System.out.println(">>>>>>> YOU HAVE ENCOUNTER AN ENEMY <<<<<<<<\n");
 				
 				PlayerNpc enemy = new PlayerNpc();
 				enemy.makeEnemy(stage.getCurrentValue().getLvlId());
 				
 				while(true)
-				{					
+				{	
+					System.out.println("//////////////////////////////////////////////////////////");				
 					System.out.println("STATUS: " + hero.getName() + " health: " + hero.getHealth() +
-							" -- " + enemy.getName() + " health: " + enemy.getHealth() + "\n");
+							" -- " + enemy.getName() + " health: " + enemy.getHealth());
+					System.out.println("//////////////////////////////////////////////////////////");
+					
 					System.out.println("[attack] - [inventory]");
 					Scanner in = new Scanner(System.in);
 					String choice = in.next().toLowerCase();
@@ -51,9 +54,15 @@ public class GameEvents {
 						switch(choice)
 						{					 
 							case "attack":
-								
 								System.out.println(hero.getName() + " attacks\n");
-								enemy.setHealth(enemy.getHealth() - hero.getDamage());
+								
+								if(hero.getMagicDamage() != null)
+								{	
+									System.out.println("///////// You use an" + hero.getMagicDamage().getName() + " //////////\n");
+									enemy.setHealth(enemy.getHealth() - hero.getMagicDamage().getDamage());
+									hero.setMagicDamage(null);
+								} else {enemy.setHealth(enemy.getHealth() - hero.getDamage());}
+								
 								System.out.println(enemy.getName() + " attacks\n");
 								hero.setHealth(hero.getHealth() - enemy.getDamage());	
 								
@@ -68,7 +77,7 @@ public class GameEvents {
 						hero.setAlive(false);
 						break;
 					}
-					if(enemy.getHealth() == 0)
+					if(enemy.getHealth() <= 0)
 					{
 						System.out.println("you have defeted the enemy\n");
 						hero.setHeroExperience(hero.getHeroExperience() + enemy.getEnemyExperience());

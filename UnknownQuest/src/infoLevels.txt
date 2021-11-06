@@ -1,2 +1,3 @@
-0,Dark woords,dirty path,I see a path verily fading,Wet down hill,I can hear the sound of a river,SIGN: To the lake, a lake?, SIGN: To the cave, I wonder what can be there,
-1,The Castle, Castle garden, I can see a lot of dark flowers; I am scare , Castle main rom, weird statues and chandeliers fliking, Living room, it is huge and cold, staircase, lights are off can't see anything,
+0,Dark woords, between bushes, I can see a path verily fading, Down hill, I can hear the sound of a river, SIGN: To the lake, a lake?, SIGN: To the cave, I wonder what can be there,
+1,The Castle, Castle garden, I can see a lot of dark flowers; I am scare , Castle main room, weird statues and chandeliers flicking, Living room, it is huge and cold, Staircase, lights are off can't see anything,
+2,Sewers, Entrance, it stinks down here, Right tunnel, can see rats eating something dead, Left tunnel, nothing special; it is dark, Underground Gate, a weird gate with strange symbols,

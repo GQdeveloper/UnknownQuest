@@ -5,7 +5,8 @@ It is about a person waking up in a strange place with portals and other paths t
 depending on your choices you can either move to the next or previous level, find enemies,
 chess with items, or nothing at all; all these events are random.
 
----
+
+
 ## How It Works
 
 Thanks to OOP, I used a doubly-linked list data structure to populate the nodes with level objects,
@@ -17,10 +18,12 @@ rooms within the level. And since the leves are within a node this allows us to 
 Created the necessary classes for the idea I had in mind. I used these classes accordingly, along with conditionals and loops, to
 obtain the desired control flow of the game. I just wanted to create a simple game by using a data structure.
 
----
+
+
 ## Use it
- - download the source files and run it on you IDE's compiler.
----
+ Download the source files and run it on you IDE's compiler.
+
+
 
 ## How to Play
 

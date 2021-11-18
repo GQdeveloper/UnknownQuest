@@ -3,8 +3,7 @@ A text-based dungeon game RPG
 ---
 It is about a person waking up in a strange place with portals and other paths that he/she can use.
 depending on your choices you can either move to the next or previous level, find enemies,
-chess with items, or nothing at all; all these events are random.
-
+chess with items, or nothing at all; all these events are random.<br />
 
 
 ## How It Works

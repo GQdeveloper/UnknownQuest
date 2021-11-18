@@ -12,18 +12,19 @@ chess with items, or nothing at all; all these events are random.
 By using OOP, I made a doubly-linked list data structure to populate the nodes with level objects,
 each level object contains four rooms all of these are interconnected. Allowing the player to move between 
 rooms within the level. Since the leves are within nodes this allows us to move the player between levels.
-
+<br />
+<br />
 ![doubly-linked](https://user-images.githubusercontent.com/22235903/140579896-9f778342-9805-40a8-b3bc-79a28cda649a.png)
-
-Created the necessary classes for the idea I had in mind. I used these classes accordingly, along with conditionals and loops, to
+<br />
+<br />
+Created the necessary classes according to the design in mind. I used these classes accordingly, along with conditionals and loops, to
 obtain the desired control flow of the game. I just wanted to create a simple game by using a data structure.
-
-
+<br />
 
 ## Use it
  Download the source files and run it on your Java IDE.
-
-
+ <br />
+ <br />
 
 ## How to Play
 

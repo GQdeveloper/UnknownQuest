@@ -9,9 +9,9 @@ chess with items, or nothing at all; all these events are random.
 
 ## How It Works
 
-Thanks to OOP, I used a doubly-linked list data structure to populate the nodes with level objects,
-each level object contains four rooms all of these are interconnected. This is because  we want to be able to move between 
-rooms within the level. And since the leves are within a node this allows us to move between levels.
+By using OOP, I made a doubly-linked list data structure to populate the nodes with level objects,
+each level object contains four rooms all of these are interconnected. Allowing the player to move between 
+rooms within the level. Since the leves are within nodes this allows us to move the player between levels.
 
 ![doubly-linked](https://user-images.githubusercontent.com/22235903/140579896-9f778342-9805-40a8-b3bc-79a28cda649a.png)
 
@@ -21,7 +21,7 @@ obtain the desired control flow of the game. I just wanted to create a simple ga
 
 
 ## Use it
- Download the source files and run it on you IDE's compiler.
+ Download the source files and run it on your Java IDE.
 
 
 
